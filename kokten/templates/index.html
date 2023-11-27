@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("create-venv-button").addEventListener("click", function () {
+                fetch("/create_venv/")
+                    .then(function (response) {
+                        if (response.status === 200) {
+                            alert("Venv oluşturuldu!");
+                        } else {
+                            alert("Venv oluşturulamadı!");
+                        }
+                    })
+                    .catch(function (error) {
+                        console.error("Hata:", error);
+                    });
+            });
+        });</script>
+    <title>Multi-Venv</title>
+</head>
+<body>
+<h1>Create Venv</h1>
+<button id="create-venv-button">Create Venv</button>
+<h1>Default Venv's</h1>
+<button><a href="{% url 'venv' venv_name='venv1' %}">venv1</a></button>
+<button><a href="{% url 'venv' venv_name='venv2' %}">venv2</a></button>
+<button><a href="{% url 'venv' venv_name='venv3' %}">venv3</a></button>
+<button><a href="{% url 'venv' venv_name='venv4' %}">venv4</a></button>
+<button><a href="{% url 'venv' venv_name='venv5' %}">venv5</a></button>
+</body>
+
+</html>
